@@ -1,110 +1,56 @@
-﻿
-/*
-    This code reverses a message, counts the number of times
-    a particular character appears, then prints the results 
-    to the console window
-*/
+﻿using System;
+// initialize variables - graded assignments 
+int currentAssignments = 5;
 
-string originalMessage = "the quick brown fox jumps over the lazy dog";
+int sophia1 = 90;
+int sophia2 = 86;
+int sophia3 = 87;
+int sophia4 = 98;
+int sophia5 = 100;
 
-char[] message = originalMessage.ToCharArray();
-Array.Reverse(message);
+int andrew1 = 92;
+int andrew2 = 89;
+int andrew3 = 81;
+int andrew4 = 96;
+int andrew5 = 90;
 
-int letterCount = 0;
+int emma1 = 90;
+int emma2 = 85;
+int emma3 = 87;
+int emma4 = 98;
+int emma5 = 68;
 
-foreach (char letter in message)
-{
-    if (letter == 'o')
-    {
-        letterCount++;
-    }
-}
+int logan1 = 90;
+int logan2 = 95;
+int logan3 = 87;
+int logan4 = 88;
+int logan5 = 96;
 
-string newMessage = new string(message);
+int sophiaSum = 0;
+int andrewSum = 0;
+int emmaSum = 0;
+int loganSum = 0;
 
-Console.WriteLine(newMessage);
-Console.WriteLine($"'o' appears  {letterCount} times");
+decimal sophiaScore;
+decimal andrewScore;
+decimal emmaScore;
+decimal loganScore;
 
+sophiaSum = sophia1 + sophia2 + sophia3 + sophia4 + sophia5;
+andrewSum = andrew1 + andrew2 + andrew3 + andrew4 + andrew5;
+emmaSum = emma1 + emma2 + emma3 + emma4 + emma5;
+loganSum = logan1 + logan2 + logan3 + logan4 + logan5;
 
+sophiaScore = (decimal)sophiaSum / currentAssignments;
+andrewScore = (decimal)andrewSum / currentAssignments;
+emmaScore = (decimal)emmaSum / currentAssignments;
+loganScore = (decimal)loganSum / currentAssignments;
 
+Console.WriteLine("Student\t\tGrade\n");
+Console.WriteLine("Sophia:\t\t" + sophiaScore + "\tA-");
+Console.WriteLine("Andrew:\t\t" + andrewScore + "\tB+");
+Console.WriteLine("Emma:\t\t" + emmaScore + "\tB");
+Console.WriteLine("Logan:\t\t" + loganScore + "\tA-");
 
-
-/*
-    The following Code creates five random OrderIDs to test the 
-    fraud  detection process.OrderIDs consist of a letter A to  E,and a 
-    three Digit number Ex-A124
-*/
-
-Random random = new Random();
-string[] orderIDs = new string[5];
-
-for (int i = 0; i < orderIDs.Length; i++)
-{
-    //Get a random value that equates to ASCII leeters A through R
-    int prefixValue = random.Next(65, 70);
-
-    //convert the random value into char,  then to a string
-    string prefix = Convert.ToChar(prefixValue).ToString();
-
-    //create a randdom number,paded with zeros  this makes 36 => 036
-    string suffix = random.Next(1, 1000).ToString("000");
-
-    //Combine the prefix with suffix together , then assign to current OrderIf
-    orderIDs[i] = prefix + suffix;
-
-}
-
-foreach(string orderID in orderIDs)
-{
-    Console.WriteLine(orderID);
-}
-
-
-/*
-string[] fradulentOrderIDArr = ["B123", "C234", "A345", "C15", "B177", "G3003", "C235", "B179"];
-
-foreach (string order in fradulentOrderIDArr)
-{
-    if (order.StartsWith("B"))
-    {
-        Console.WriteLine(order);
-    }
-}
-*/
-
-/*
-
-int sum = 0, bin = 0;
-int[] inventory = { 200, 450, 700, 175, 250 };
-foreach (int num in inventory)
-{
-    bin++;
-    sum += num; 
-   Console.WriteLine($"Bin {bin} = {num} items (Running total: {sum})");
-}
-Console.WriteLine($"We have {sum} items in inventory.");
-string[] names = { "Rowena", "Robin", "Bao" };
-foreach (string name in names)
-{
-    Console.WriteLine(name);
-}
-
-
-string[] fraudulentOrderIDs = new string[3];
-fraudulentOrderIDs[0] = "A123";
-fraudulentOrderIDs[1] = "B456";
-fraudulentOrderIDs[2] = "C789";
-// fraudulentOrderIDs[3] = "D000";
-
-string[] fraudulentOrderIDs = ["A123", "B456", "C789"]; 
-Console.WriteLine($"First: {fraudulentOrderIDs[0]}");
-Console.WriteLine($"Second: {fraudulentOrderIDs[1]}");
-Console.WriteLine($"Third: {fraudulentOrderIDs[2]}");
-
-
-fraudulentOrderIDs[0] = "F000";
-Console.WriteLine($"Reassign First :{fraudulentOrderIDs[0]}");
-
-Console.WriteLine($"There are {fraudulentOrderIDs.Length} fraudulent orders to process.");
-Console.WriteLine($"There are {fraudulentOrderIDs.Count()} fraudulent orders to process.");
-*/
+Console.WriteLine("Press the Enter key to continue");
+Console.ReadLine();
