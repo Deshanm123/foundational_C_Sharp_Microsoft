@@ -48,7 +48,7 @@ int sumOfScores(int[] scoreArr)
         }
         else
         {
-           // sumofScores += score / 10;
+            sumofScores += score / 10;
             //sumofScores  += Convert.ToInt32( score * 0.1M);
         }
         scoreCount++;
