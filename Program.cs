@@ -33,7 +33,7 @@ string currentStudentLetterGrade = "";
 
 // display the header row for scores/grades
 Console.Clear();
-Console.WriteLine("Student\t\tGrade\tLetter Grade\n");
+Console.WriteLine("Student\t\tExam Score\t\tOverall Grade\t\tExtra Credit\n");
 
 /*
 The outer foreach loop is used to:
@@ -59,10 +59,11 @@ foreach (string name in studentNames)
     else if (currentStudent == "Logan")
         studentScores = loganScores;
 
-    int sumAssignmentScores = 0;
-
-    decimal currentStudentGrade = 0;
-
+    decimal  sumAssignmentScores = 0;
+    decimal sumOfExtraCredits = 0.0M;
+    int averageOfExtraCredits = 0;
+    decimal currentStudentGrade = 0.00M;
+    decimal examScore = 0.0M;
     int gradedAssignments = 0;
 
     /* 
@@ -74,14 +75,26 @@ foreach (string name in studentNames)
         gradedAssignments += 1;
 
         if (gradedAssignments <= examAssignments)
+        {
             sumAssignmentScores += score;
-
+            if (gradedAssignments == examAssignments)
+            {
+               examScore = (decimal)sumAssignmentScores / examAssignments;
+            }
+        }
+        
         else
-            sumAssignmentScores += score / 10;
+        {
+            sumOfExtraCredits += score;
+            sumAssignmentScores += (decimal)score / 10;
+
+        }
     }
 
     currentStudentGrade = (decimal)(sumAssignmentScores) / examAssignments;
-
+    if (studentScores.Length + 1 > examAssignments)
+        averageOfExtraCredits = Convert.ToInt32(sumOfExtraCredits / (studentScores.Length - examAssignments));
+        
     if (currentStudentGrade >= 97)
         currentStudentLetterGrade = "A+";
 
@@ -124,7 +137,7 @@ foreach (string name in studentNames)
     // Student         Grade
     // Sophia:         92.2    A-
     
-    Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}");
+    Console.WriteLine($"{currentStudent}\t\t\t{examScore}\t\t{Math.Round(currentStudentGrade,2)}\t{currentStudentLetterGrade}\t\t{averageOfExtraCredits} ({currentStudentGrade-examScore} pts)");
 }
 
 // required for running in VS Code (keeps the Output windows open to view results)
